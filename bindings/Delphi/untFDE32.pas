@@ -180,16 +180,17 @@ type
     flags: LongWord;
   end;
 
-function FDE32Decode(lpCode: Pointer; var FDE: TFDE32S): LongWord;
-function FDE32Encode(lpCode: Pointer; var FDE: TFDE32S): LongWord;
+{$IFDEF  WIN32}
+function FDE32Decode(lpCode: Pointer; var FDE: TFDE32S): LongWord; cdecl;
+  external name 'decode';
+function FDE32Encode(lpCode: Pointer; var FDE: TFDE32S): LongWord; cdecl;
+  external name 'encode';
+{$ENDIF}
 
 implementation
 
-function _FDE32Decode(lpCode: Pointer; var FDE: TFDE32S): LongWord; cdecl;
-  external name 'decode';
-function _FDE32Encode(lpCode: Pointer; var FDE: TFDE32S): LongWord; cdecl;
-  external name 'encode';
-
+{$IFDEF  WIN32}
 {$L FDE32.obj}
+{$ENDIF}
 
 end.

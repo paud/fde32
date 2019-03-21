@@ -214,12 +214,14 @@ type
     flags: LongWord;
   end;
 
+{$IFDEF   WIN64}
 function FDE64Decode(lpCode: Pointer; var FDE: TFDE64S): LongWord;
   external name 'decode';
 function FDE64Encode(lpCode: Pointer; var FDE: TFDE64S): LongWord;
   external name 'encode';
 
 {$L FDE64.obj}
+{$ENDIF}
 
 implementation
 
