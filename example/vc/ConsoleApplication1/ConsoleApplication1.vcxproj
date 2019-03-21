@@ -26,6 +26,7 @@
     <ClInclude Include="..\..\..\bindings\C\capstoneCompatible.h" />
     <ClInclude Include="..\..\..\bindings\C\fde32.h" />
     <ClInclude Include="..\..\..\bindings\C\fde64.h" />
+    <ClInclude Include="..\..\..\bindings\C\x86.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -147,7 +148,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>

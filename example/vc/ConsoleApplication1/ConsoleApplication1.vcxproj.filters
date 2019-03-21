@@ -32,5 +32,8 @@
     <ClInclude Include="..\..\..\bindings\C\capstoneCompatible.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\bindings\C\x86.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

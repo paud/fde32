@@ -16,7 +16,7 @@ int main(void)
   struct fde32s cmd;
 #endif 
   cs_insn *insn;
-  cs_disasm(0, ptr, 30, 0, 0, &insn);
+  cs_disasm(0, ptr, 30, 0, 0, &insn,0);
   int l=0;
   int i = 0;
   while (l < 20) {

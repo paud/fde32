@@ -7,9 +7,9 @@
 
 size_t cs_disasm(size_t handle,
   size_t *code, size_t code_size,
-  size_t address,
+  unsigned long long address,
   size_t count,
-  cs_insn **insn) {
+  cs_insn **insn, int unkonw) {
 #ifdef _M_X64
   struct fde64s cmd;
 #else
@@ -26,9 +26,7 @@ size_t cs_disasm(size_t handle,
     ins = *insn;
     ins[i].size=cmd.len;
     ++i;
-  
   }
-
 }
 
 size_t cs_open(size_t arch, size_t mode, size_t *handle) {

@@ -1,6 +1,8 @@
 #pragma once
 #include <vcruntime.h>
 #include <malloc.h>
+#include <stdint.h>
+
 
 typedef struct cs_insn {
   // Instruction ID (basically a numeric ID for the instruction mnemonic)
@@ -13,14 +15,14 @@ typedef struct cs_insn {
 
   // Address (EIP) of this instruction
   // This information is available even when CS_OPT_DETAIL = CS_OPT_OFF
-  size_t address;
+  uint64_t address;
 
   // Size of this instruction
   // This information is available even when CS_OPT_DETAIL = CS_OPT_OFF
-  int size;
+  uint16_t size;
   // Machine bytes of this instruction, with number of bytes indicated by @size above
   // This information is available even when CS_OPT_DETAIL = CS_OPT_OFF
-  char bytes[16];
+  uint8_t bytes[16];
 
   // Ascii text of instruction mnemonic
   // This information is available even when CS_OPT_DETAIL = CS_OPT_OFF
@@ -37,14 +39,15 @@ typedef struct cs_insn {
   //
   // NOTE 2: when in Skipdata mode, or when detail mode is OFF, even if this pointer
   //     is not NULL, its content is still irrelevant.
-  size_t *detail;
+  char *detail;
 } cs_insn;
+
 
 
 size_t cs_disasm(size_t handle,
   const size_t *code, size_t code_size,
-  size_t address,
+  unsigned long long address,
   size_t count,
-  cs_insn **insn);
+  cs_insn **insn,int unkonw);
 
 size_t cs_open(size_t arch, size_t mode, size_t *handle);
