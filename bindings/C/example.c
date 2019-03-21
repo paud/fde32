@@ -1,10 +1,28 @@
 #include <stdio.h>
+#include "capstoneCompatible.h"
+
+#ifdef _M_X64
+#include "fde64.h"
+#else
 #include "fde32.h"
+#endif 
 
 int main(void)
 {
 	const void *ptr = (const void *)&main;
-	struct fde32s cmd;
+#ifdef _M_X64
+  struct fde64s cmd;
+#else
+  struct fde32s cmd;
+#endif 
+  cs_insn *insn;
+  cs_disasm(0, ptr, 30, 0, 0, &insn);
+  int l=0;
+  int i = 0;
+  while (l < 20) {
+    l += insn[i].size;
+    ++i;
+  }
 
 	for (;;) {
 		decode(ptr, &cmd);
